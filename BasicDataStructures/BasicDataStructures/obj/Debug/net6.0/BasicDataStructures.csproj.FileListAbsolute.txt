@@ -1,0 +1,12 @@
+C:\Users\Duško\Desktop\BasicDataStructures\BasicDataStructures\BasicDataStructures\bin\Debug\net6.0\BasicDataStructures.deps.json
+C:\Users\Duško\Desktop\BasicDataStructures\BasicDataStructures\BasicDataStructures\bin\Debug\net6.0\BasicDataStructures.dll
+C:\Users\Duško\Desktop\BasicDataStructures\BasicDataStructures\BasicDataStructures\bin\Debug\net6.0\BasicDataStructures.pdb
+C:\Users\Duško\Desktop\BasicDataStructures\BasicDataStructures\BasicDataStructures\obj\Debug\net6.0\BasicDataStructures.csproj.AssemblyReference.cache
+C:\Users\Duško\Desktop\BasicDataStructures\BasicDataStructures\BasicDataStructures\obj\Debug\net6.0\BasicDataStructures.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Duško\Desktop\BasicDataStructures\BasicDataStructures\BasicDataStructures\obj\Debug\net6.0\BasicDataStructures.AssemblyInfoInputs.cache
+C:\Users\Duško\Desktop\BasicDataStructures\BasicDataStructures\BasicDataStructures\obj\Debug\net6.0\BasicDataStructures.AssemblyInfo.cs
+C:\Users\Duško\Desktop\BasicDataStructures\BasicDataStructures\BasicDataStructures\obj\Debug\net6.0\BasicDataStructures.csproj.CoreCompileInputs.cache
+C:\Users\Duško\Desktop\BasicDataStructures\BasicDataStructures\BasicDataStructures\obj\Debug\net6.0\BasicDataStructures.dll
+C:\Users\Duško\Desktop\BasicDataStructures\BasicDataStructures\BasicDataStructures\obj\Debug\net6.0\refint\BasicDataStructures.dll
+C:\Users\Duško\Desktop\BasicDataStructures\BasicDataStructures\BasicDataStructures\obj\Debug\net6.0\BasicDataStructures.pdb
+C:\Users\Duško\Desktop\BasicDataStructures\BasicDataStructures\BasicDataStructures\obj\Debug\net6.0\ref\BasicDataStructures.dll
