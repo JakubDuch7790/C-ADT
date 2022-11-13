@@ -29,15 +29,9 @@ public class LinkedListTest
     {
         // Arrange
         var list = new MyLinkedList();
-        var node = new MyLinkedListNode
-        {
-            Value = 10
-        };
 
-        list.First = node;
-        list.Last = node;
-
-        int soughtValue = node.Value;
+        const int soughtValue = 10;
+        list.Insert(soughtValue);
 
         // Act
         var result = list.Search(soughtValue);
@@ -52,111 +46,175 @@ public class LinkedListTest
     {
         // Arrange
         var list = new MyLinkedList();
-        var node = new MyLinkedListNode
-        {
-            Value = 10
-        };
 
-        list.First = node;
-        list.Last = node;
+        const int existingValue = 10;
+        list.Insert(existingValue);
 
-        int soughtValue = 500;
+        const int soughtValue = 500;
 
         // Act
         var result = list.Search(soughtValue);
 
         // Assert
         Assert.Null(result);
-
-
     }
 
     [Fact]
-    public void Search_MultiElementList_ExistentValue_ReturnsValidValue()
+    public void Search_MultipleElementsList_ExistentValue_ReturnsValidValue()
     {
         // Arrange
         var list = new MyLinkedList();
-        var node = new MyLinkedListNode
-        {
-            Value = 10
-        };
-        var node2 = new MyLinkedListNode
-        {
-            Value = 11,
-            Previous = node
-        };
-        node.Next = node2;
-        var node3 = new MyLinkedListNode
-        {
-            Value = 12,
-            Previous = node2
-        };
-        node2.Next = node3;
+        const int soughtValue = 3;
 
-
-        list.First = node;
-        list.Last = node3;
-
-
-        int soughtValue = node3.Value;
+        list.Insert(1);
+        list.Insert(2);
+        list.Insert(soughtValue);
 
         // Act
         var result = list.Search(soughtValue);
 
         // Assert
         Assert.NotNull(result);
-        Assert.Equal(soughtValue, result.Value);
+        Assert.Equal(soughtValue, result!.Value);
     }
-    //TestovanaMetoda_kratkyOpisTestu_OcakavanyVysledok
+
+    [Fact]
+    public void Search_MultipleElementsList_NonexistentValue_ReturnsNull()
+    {
+        // Arrange
+        var list = new MyLinkedList();
+        const int soughtValue = 500;
+
+        list.Insert(1);
+        list.Insert(2);
+        list.Insert(3);
+
+        // Act
+        var result = list.Search(soughtValue);
+
+        // Assert
+        Assert.Null(result);
+    }
+
     [Fact]
     public void Insert_EmptyList_CorrectlyInserted()
     {
-        //Arrange
-        var myLinkedList = new MyLinkedList();
-        var node = new MyLinkedListNode()
-        {
-            Value = 5,
-        };
+        // Arrange
+        var list = new MyLinkedList();
+        const int insertedValue = 5;
 
-        //Act
-        var result = myLinkedList.Insert(node.Value);
-        //Assert
+        // Act
+        var result = list.Insert(insertedValue);
 
+        // Assert
         Assert.NotNull(result);
-        Assert.Equal(node.Value, result.Value);
-        Assert.Null(result.Next);
-        Assert.Null(result.Previous);
-        Assert.Equal(result, myLinkedList.First);
-        Assert.Equal(result, myLinkedList.Last);
+        Assert.Equal(list.First, result);
+        Assert.Equal(list.Last, result);
     }
-    [Fact]
-    public void Insert_OneElementList_CorrectInsert()
-    {
-        //Arrange
 
-        var myLinkedList = new MyLinkedList();
-        int randomElement = 1;
-        myLinkedList.Insert(randomElement);
-        var node = new MyLinkedListNode()
+    [Fact]
+    public void Insert_OneElementList_CorrectlyInserted()
+    {
+        // Arrange
+        var list = new MyLinkedList();
+        var first = list.Insert(1);
+
+        const int insertedValue = 5;
+
+        // Act
+        var result = list.Insert(insertedValue);
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal(first, list.First);
+
+        Assert.Equal(list.Last, result);
+
+        Assert.Equal(list.First!.Next, result);
+        Assert.Equal(list.First, result.Previous);
+    }
+
+    [Fact]
+    public void Insert_MultipleElementList_CorrectlyInserted()
+    {
+        // Arrange
+        var list = new MyLinkedList();
+        var first = list.Insert(1);
+        var second = list.Insert(2);
+
+        const int insertedValue = 5;
+
+        // Act
+        var result = list.Insert(insertedValue);
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal(first, list.First);
+
+        Assert.Equal(result, list.Last);
+
+        Assert.Equal(list.First!.Next, second);
+        Assert.Equal(second.Previous, list.First);
+
+        Assert.Equal(list.Last, result);
+        Assert.Equal(second, result.Previous);
+
+        Assert.Equal(second.Next, result);
+    }
+
+    [Fact]
+    public void Delete_EmptyList_CorrectlyRemoved()
+    {
+        // Arrange
+        var list = new MyLinkedList();
+
+        var node = new MyLinkedListNode
         {
-            Value = 55
+            Value = 10
         };
 
-        //Act
-
-        var result = myLinkedList.Insert(node.Value);
-
-        //Assert
-        Assert.NotNull(myLinkedList.First);
-        Assert.Equal(node.Value, result.Value);
-        Assert.Equal(result, myLinkedList.Last);
-        //Assert.NotEqual<int>(result.Value, myLinkedList.First);
+        // Act
+        list.Delete(node);
 
 
-
-        
-        
+        // Assert
+        Assert.Null(list.First);
+        Assert.Null(list.Last);
     }
 
+    [Fact]
+    public void Delete_OneElementList_ExistingNode_CorrectlyRemoved()
+    {
+        // Arrange
+        var list = new MyLinkedList();
 
+        var first = list.Insert(1);
+
+        // Act
+        list.Delete(first);
+
+        // Assert
+        Assert.Null(list.First);
+        Assert.Null(list.Last);
+    }
+
+    [Fact]
+    public void Delete_TwoElementList_FirstNode_CorrectlyRemoved()
+    {
+        // Arrange
+        var list = new MyLinkedList();
+
+        var first = list.Insert(1);
+        var second = list.Insert(2);
+
+        // Act
+        list.Delete(first);
+
+        // Assert
+        Assert.Equal(list.First, second);
+        Assert.Equal(list.Last, second);
+
+        Assert.Null(second.Previous);
+        Assert.Null(second.Next);
+    }
 }

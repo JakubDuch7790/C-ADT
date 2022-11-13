@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography;
-
+﻿
 namespace BasicDataStructures.LinkedList;
 
 /// <summary>
@@ -10,13 +9,13 @@ public class MyLinkedList
     /// <summary>
     /// Reference na prvni prvek seznamu
     /// </summary>
-    public MyLinkedListNode? First { get; set; }
+    public MyLinkedListNode? First { get; private set; }
 
 
     /// <summary>
     /// Reference na posledni prvek seznamu
     /// </summary>
-    public MyLinkedListNode? Last { get; set; }
+    public MyLinkedListNode? Last { get; private set; }
 
     /// <summary>
     /// Vlozi na konec seznamu (za prvek last) novy uzel s hodnotou value.Vraci nove vlozeny objekt.
@@ -79,5 +78,10 @@ public class MyLinkedList
     public void Delete(MyLinkedListNode node)
     {
        
+    }
+
+    public bool IsEmpty()
+    {
+        return First == null && Last == null;
     }
 }
