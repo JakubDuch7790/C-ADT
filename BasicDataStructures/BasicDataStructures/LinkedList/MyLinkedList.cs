@@ -77,40 +77,26 @@ public class MyLinkedList
     /// <param name="node"></param>
     public void Delete(MyLinkedListNode node)
     {
-        var currentNode = First;
 
-        while (currentNode != null)
+        var nextNode = node.Next;
         {
-            var nextNode = currentNode.Next;
-
-            if (currentNode.Value == node.Value)
+            if (node == Last)
             {
-
-                if (currentNode == Last)
-                {
-                    Last = currentNode.Previous;
-                }
-
-                else
-                {
-                    currentNode.Next.Previous = currentNode.Previous;
-                }
-
-                if (currentNode == First)
-                {
-                    First = currentNode.Next;
-                }
-                else
-                {
-                    currentNode.Previous.Next = currentNode.Next;
-                }
-
-                currentNode = nextNode;
+                Last = node.Previous;
+            }
+            else if (nextNode != null)
+            {
+                nextNode.Previous = node.Previous;
+            }
+            if (node == First)
+            {
+                node.Next = First;
+            }
+            else if (node.Previous != null)
+            {
+                node.Next = node.Previous.Next;
             }
         }
-
-
-
     }
 
     /// <summary>

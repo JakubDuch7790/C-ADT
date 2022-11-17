@@ -22,13 +22,15 @@ public class MyQueue
     public void Enque(int value)
     {
 
-        var myQueueItem = new MyQueueItem();
+        var myQueueItem = new MyQueueItem()
+        {
+            Value = value
+        };
 
         if (IsEmpty())
         {
             myQueueItem = First;
-            myQueueItem = Last;
-            myQueueItem.Value = value;
+            Last = First;
         }
         else
         {
