@@ -21,7 +21,21 @@ public class MyQueue
     /// <param name="value"></param>
     public void Enque(int value)
     {
-        throw new NotImplementedException();
+
+        var myQueueItem = new MyQueueItem();
+
+        if (IsEmpty())
+        {
+            myQueueItem = First;
+            myQueueItem = Last;
+            myQueueItem.Value = value;
+        }
+        else
+        {
+            myQueueItem = Last.LeftItem;
+            myQueueItem.Value = value;
+        }
+
     }
 
     /// <summary>
@@ -30,7 +44,15 @@ public class MyQueue
     /// <returns></returns>
     public int? Deque()
     {
-        throw new NotImplementedException();
+        if (IsEmpty())
+        {
+            return null;
+        }
+        else
+        {
+            return First.Value;
+            First.LeftItem = First;
+        }
     }
 
     /// <summary>
@@ -39,6 +61,12 @@ public class MyQueue
     /// <returns></returns>
     public bool IsEmpty()
     {
-        throw new NotImplementedException();
+        if (First == null && Last == null)
+
+        { 
+            return true;
+        }
+
+        return false;
     }
 }
