@@ -113,6 +113,21 @@ public class MyLinkedList
 
     }
 
+    /// <summary>
+    /// Vytvorí obrátenú kópiu pôvodného LinkedListu bez toho, aby bol zmenený (!!!).
+    /// Príklad: zoznam s uzlami A (first) ukazuje na Next uzol B, ktorý ukazuje cez Previous na A
+    /// a zároveň ukazuje cez Next na uzol C. Ten ukazuje na uzol B cez prev a zároveň je Last.
+    /// 
+    /// Reverse vytvorí nad týmto zoznamom vytvorí nasledujúcu verziu:
+    /// First uzol C ukazuje cez Next na B, ktorý spätne ukazuje cez Previous na C. B zároveň ukazuje cez
+    /// Next na A. Ten ukazuje na B cez Previous a zároveň je Last zoznamu.
+    /// </summary>
+    /// <returns>Obrátená verzia pôvodného zoznamu</returns>
+    public MyLinkedList Reverse()
+    {
+        throw new NotImplementedException();
+    }
+
     public bool IsEmpty()
     {
         return First == null && Last == null;
