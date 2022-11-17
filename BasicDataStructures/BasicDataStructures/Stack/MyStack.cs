@@ -13,7 +13,18 @@ public class MyStack
     /// <param name="value"></param>
     public void Push(int value)
     {
-        throw new NotImplementedException();
+        var kotuc = new MyStackItem();
+
+        if (IsEmpty())
+        {
+            kotuc = TopItem;
+            kotuc.Value = value;
+        }
+        else
+        {
+            kotuc = TopItem.Below;
+            kotuc.Value = value;
+        }
     }
 
     /// <summary>
@@ -22,7 +33,15 @@ public class MyStack
     /// <returns></returns>
     public int? Pop()
     {
-        throw new NotImplementedException();
+        if (IsEmpty())
+        {
+            return null;
+        }
+        else
+        {
+            return TopItem.Value;
+            TopItem.Below = TopItem;
+        }
     }
 
     /// <summary>
@@ -31,6 +50,13 @@ public class MyStack
     /// <returns></returns>
     public bool IsEmpty()
     {
-        throw new NotImplementedException();
+        if (TopItem == null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
