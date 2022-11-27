@@ -17,12 +17,13 @@ public class MyStack
 
         if (IsEmpty())
         {
-            kotuc = TopItem;
+            TopItem = kotuc;
             kotuc.Value = value;
         }
         else
         {
-            kotuc = TopItem.Below;
+            kotuc.Below = TopItem;
+            TopItem = kotuc;
             kotuc.Value = value;
         }
     }
