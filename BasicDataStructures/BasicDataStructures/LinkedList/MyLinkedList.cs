@@ -77,25 +77,61 @@ public class MyLinkedList
     /// <param name="node"></param>
     public void Delete(MyLinkedListNode node)
     {
-
-        var nextNode = node.Next;
+        // toto vyratal zdenek frajer, som to potom prepisal este 80 000 krat ale i tak som to nedal :D
         {
-            if (node == Last)
+            if (IsEmpty())
+            {
+                return;
+            }
+
+            var previous = node.Previous;
+            var next = node.Next;
+
+            if (previous == null)
+            {
+                First = next;
+            }
+            else
+            {
+                previous.Next = next;
+            }
+            if (next == null)
+            {
+                Last = previous;
+            }
+            else
+            {
+                next.Previous = previous;
+            }
+        
+
+          /*  if (node == Last && node == First)
+            {
+                node.Next = null;
+                node.Previous = null;
+                return;
+            }
+
+            if (node == Last && node != First)
             {
                 Last = node.Previous;
             }
-            else if (nextNode != null)
+            else
             {
-                nextNode.Previous = node.Previous;
+                node.Previous.Next = node.Next;
             }
             if (node == First)
             {
-                node.Next = First;
+                First = node.Next;
             }
-            else if (node.Previous != null)
+            else
             {
-                node.Next = node.Previous.Next;
+                node.Next.Previous = node.Previous;
             }
+            */
+
+
+
         }
     }
 

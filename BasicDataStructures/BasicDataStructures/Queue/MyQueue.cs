@@ -29,12 +29,13 @@ public class MyQueue
 
         if (IsEmpty())
         {
-            myQueueItem = First;
-            Last = First;
+            First = myQueueItem;
+            Last = myQueueItem;
         }
         else
         {
-            myQueueItem = Last.LeftItem;
+            myQueueItem.LeftItem = Last;
+            Last = myQueueItem;
             myQueueItem.Value = value;
         }
 
@@ -46,15 +47,20 @@ public class MyQueue
     /// <returns></returns>
     public int? Deque()
     {
+        var first = First.Value;
+
         if (IsEmpty())
         {
             return null;
         }
-        else
+
+        if (First.LeftItem != null)
         {
-            return First.Value;
             First.LeftItem = First;
         }
+        return first;
+
+
     }
 
     /// <summary>
