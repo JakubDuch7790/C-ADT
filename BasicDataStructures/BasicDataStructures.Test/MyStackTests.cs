@@ -43,7 +43,27 @@ namespace BasicDataStructures.Test
 
             //Assert
             Assert.Equal(myStack.TopItem.Value, insertedStackItem);
-            //Assert.NotEqual(myStack.TopItem.Value, existingStackItem);
+            Assert.NotEqual(existingStackItem, myStack.TopItem.Value);
+        }
+
+        [Fact]
+        public void Pop_PopTwoElementStack_CorrectlyPopped()
+        {
+            //Arrange
+            MyStack myStack = new MyStack();
+            const int existingValue = 88;
+            const int existingValue2 = 99;
+
+            myStack.Push(existingValue);
+            myStack.Push(existingValue2);
+
+            //Act
+            myStack.Pop();
+
+            //Assert
+            Assert.Equal(existingValue, myStack.TopItem.Value);
+            Assert.NotNull(myStack.TopItem);
+            //Assert.
         }
     }
 }

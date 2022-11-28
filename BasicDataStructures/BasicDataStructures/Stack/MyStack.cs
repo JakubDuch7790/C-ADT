@@ -34,15 +34,17 @@ public class MyStack
     /// <returns></returns>
     public int? Pop()
     {
+        var topItemValue = TopItem.Value;
+
         if (IsEmpty())
         {
             return null;
         }
         else
         {
-            return TopItem.Value;
-            TopItem.Below = TopItem;
+            TopItem = TopItem.Below;
         }
+        return topItemValue;
     }
 
     /// <summary>
