@@ -34,9 +34,9 @@ public class MyQueue
         }
         else
         {
-            myQueueItem.LeftItem = Last;
-            Last = myQueueItem;
             myQueueItem.Value = value;
+            myQueueItem.Previous = Last;
+            Last = myQueueItem;
         }
 
     }
@@ -54,9 +54,9 @@ public class MyQueue
             return null;
         }
 
-        if (First.LeftItem != null)
+        if (First.Previous != null)
         {
-            First.LeftItem = First;
+            First.Previous = First;
         }
         return first;
 

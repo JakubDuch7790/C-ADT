@@ -13,5 +13,5 @@ public class MyQueueItem
     /// <summary>
     /// Reference na predchazejici prvek ve fronte
     /// </summary>
-    public MyQueueItem? LeftItem { get; set; }
+    public MyQueueItem? Previous { get; set; }
 }

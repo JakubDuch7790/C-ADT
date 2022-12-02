@@ -54,4 +54,5 @@ public class CircularList
     {
         throw new NotImplementedException();
     }
+    public record
 }

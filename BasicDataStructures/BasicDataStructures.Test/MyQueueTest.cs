@@ -26,7 +26,7 @@ namespace BasicDataStructures.Test
             Assert.NotNull(myQueue.Last);
             Assert.Equal(insertedValue, myQueue.First.Value);
             Assert.Equal(insertedValue, myQueue.Last.Value);
-            Assert.Null(myQueue.First.LeftItem);
+            Assert.Null(myQueue.First.Previous);
         }
 
         [Fact]
@@ -34,7 +34,6 @@ namespace BasicDataStructures.Test
         {
             // Arrange
             MyQueue myQueue = new MyQueue();
-
 
             const int existingValue = 35;
             var insertedValue = 25;
@@ -47,11 +46,37 @@ namespace BasicDataStructures.Test
             Assert.NotNull(myQueue.First);
             Assert.NotNull(myQueue.Last);
             Assert.Equal(insertedValue, myQueue.Last.Value);
-            Assert.Equal(myQueue.First, myQueue.Last.LeftItem);
+            Assert.Equal(myQueue.First, myQueue.Last.Previous);
 
         }
+
         [Fact]
-        public void Deque_OneElementQueue_Dequeued()
+        public void Enque_MultipleElementQueue_CorrectlyInserted()
+        {
+            //Arrange
+            MyQueue myQueue = new MyQueue();
+
+
+            const int value1 = 88;
+            const int value2 = 99;
+            var value3 = 66;
+            myQueue.Enque(value1);
+            myQueue.Enque(value2);
+            var lastOne = myQueue.Last;
+
+            //Act
+            myQueue.Enque(value3);
+
+            //Assert
+            Assert.NotNull(myQueue.First);
+            Assert.NotNull(myQueue.Last);
+            Assert.Equal(value3, myQueue.Last.Value);
+            Assert.Equal(lastOne, myQueue.Last.Previous);
+        }
+
+
+        [Fact]
+        public void Deque_TwoElementQueue_CorrectlyDequeued()
         {
             // Arrange
             MyQueue myQueue = new MyQueue();
@@ -67,6 +92,7 @@ namespace BasicDataStructures.Test
 
             // Assert
             Assert.Equal(elementValue2, myQueue.First.Value);
+            //Assert.Null(my)
         }
     }
 }

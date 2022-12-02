@@ -14,16 +14,13 @@ namespace BasicDataStructures.Test
         public void Push_PushEmptyStack_CorrectlyPushed()
         {
             //Arrange
-
             MyStack myStack = new MyStack();
             var insertedValue = 88;
 
             //Act
-
             myStack.Push(insertedValue);
 
             //Assert
-
             Assert.NotNull(myStack.TopItem);
             Assert.Equal(insertedValue, myStack.TopItem.Value);
         }
@@ -32,18 +29,18 @@ namespace BasicDataStructures.Test
         public void Push_PushOneElementStack_CorrectlyPushed()
         {
             //Arrange
-
             MyStack myStack = new MyStack();
             const int existingStackItem = 88;
             myStack.Push(existingStackItem);
-            var insertedStackItem = 66;
+            const int insertedStackItem = 66;
 
             //Act
             myStack.Push(insertedStackItem);
 
             //Assert
-            Assert.Equal(myStack.TopItem.Value, insertedStackItem);
-            Assert.NotEqual(existingStackItem, myStack.TopItem.Value);
+            Assert.Equal(insertedStackItem, myStack.TopItem.Value);
+            Assert.Equal(existingStackItem, myStack.TopItem.Below.Value);
+            Assert.Null(myStack.TopItem.Below.Below);
         }
 
         [Fact]
@@ -58,12 +55,12 @@ namespace BasicDataStructures.Test
             myStack.Push(existingValue2);
 
             //Act
-            myStack.Pop();
+            var poppedItem = myStack.Pop();
 
             //Assert
             Assert.Equal(existingValue, myStack.TopItem.Value);
             Assert.NotNull(myStack.TopItem);
-            //Assert.
+            Assert.Equal(existingValue2, poppedItem.Value);
         }
     }
 }
